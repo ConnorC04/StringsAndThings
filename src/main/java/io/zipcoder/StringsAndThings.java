@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.Arrays;
+
 /**
  * @author tariq
  */
@@ -15,7 +17,23 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String extraSpace = input.concat(" ");
+        int counter = 0;
+        for (int i = 0; i <= input.length(); i++){
+            if (extraSpace.charAt(i) == 'y'){
+                if (!Character.isLetter(extraSpace.charAt(i+1))){
+                    counter++;
+                }
+            }else{
+                if (extraSpace.charAt(i) == 'z'){
+                    if (!Character.isLetter(extraSpace.charAt(i+1))){
+                        counter++;
+                    }
+                }
+            }
+        }
+
+        return counter;
     }
 
     /**
@@ -28,7 +46,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove, "");
     }
 
     /**
@@ -40,7 +58,25 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        String extraSpace = input.concat("    ");
+        int counterOfIs = 0;
+        int counterOfNot = 0;
+        for (int i = 0; i <= input.length(); i++){
+            if (extraSpace.charAt(i) == 'i'){
+                if (extraSpace.charAt(i+1) == 's'){
+                    counterOfIs++;
+                }
+            }else{
+                if (extraSpace.charAt(i) == 'n'){
+                    if (extraSpace.charAt(i+1) == 'o'){
+                        if (input.charAt(i+2) == 't'){
+                            counterOfNot ++;
+                        }
+                    }
+                }
+            }
+        }
+        return counterOfNot == counterOfIs;
     }
 
     /**
@@ -50,8 +86,18 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+        String extraSpace = input.concat("    ");
+        int counter = 0;
+        for (int i = 0; i <= input.length(); i++) {
+            if (extraSpace.charAt(i) == 'g') {
+                if (extraSpace.charAt(i + 1) == 'g') {
+                    counter++;
+                }
+
+            }
+        }
+        return counter > 0;
     }
 
 
@@ -63,6 +109,17 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+
+        String extraSpace = input.concat("   ");
+        int counter = 0;
+        for (int i = 0; i <= input.length(); i++) {
+            if (extraSpace.charAt(i) == extraSpace.charAt(i+1)) {
+                if (extraSpace.charAt(i + 1) == extraSpace.charAt(i+2)) {
+                    counter++;
+                }
+
+            }
+        }
+        return counter-1;
     }
 }
